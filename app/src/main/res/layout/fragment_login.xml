@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/intro_background"
+    tools:context=".presentation.ui.LoginFragment">
+
+    <TextView
+        android:id="@+id/label_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:layout_marginBottom="50dp"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="Đăng nhập"
+        android:textColor="@color/white"
+        android:textSize="50sp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout1"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/label_login"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+
+        >
+
+        <EditText
+            android:id="@+id/edt_username"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/baseline_person_outline_24"
+
+            android:background="@drawable/input_border"
+            android:drawablePadding="20dp"
+            android:hint="Tên đăng nhập"
+            android:padding="20dp"
+            android:text="khachhang1"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayout1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:textColorHint="@color/white"
+        app:boxStrokeColor="@color/white"
+        app:hintTextColor="@color/white"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/edt_password"
+            android:drawableStart="@drawable/baseline_person_outline_24"
+
+            android:background="@drawable/input_border"
+            android:drawablePadding="20dp"
+            android:hint="Mật khẩu"
+            android:inputType="textPassword"
+            android:padding="20dp"
+            android:text="123456"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textInputLayout2"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="40dp"
+        android:background="#BF0BD8F3"
+        android:paddingLeft="40dp"
+
+        android:paddingRight="40dp"
+        android:text="Xác nhận"
+        android:textColor="@color/white" />
+
+    <include
+        android:id="@+id/login_progress"
+        layout="@layout/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible" />
+</RelativeLayout>

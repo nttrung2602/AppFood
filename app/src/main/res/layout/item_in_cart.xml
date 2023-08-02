@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="30dp"
+    app:cardElevation="20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/img_item"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="5dp"
+            android:background="@drawable/corner_item_food_and_drink"
+            android:src="@drawable/burger"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Burger thịt xông khói"
+            android:textColor="#000000"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/img_item"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+
+            android:text="SL còn: 0"
+            android:textColor="#801F201F"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@+id/item_name"
+            app:layout_constraintTop_toBottomOf="@+id/item_name" />
+
+        <TextView
+            android:id="@+id/item_price"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="30,000 đồng"
+            android:textColor="#4CAF50"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/item_quantity"
+            app:layout_constraintTop_toBottomOf="@+id/item_quantity"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <ImageView
+            android:id="@+id/image_inc_quantity"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/circle_vector_asset"
+            android:backgroundTint="#33000000"
+            android:padding="5dp"
+            android:src="@drawable/baseline_add_24"
+
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <TextView
+            android:id="@+id/counter_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+
+            android:text="1"
+            android:textColor="#991A1B1A"
+            android:textSize="24sp"
+
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/image_inc_quantity"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.806" />
+
+        <ImageView
+            android:id="@+id/image_des_quantity"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginEnd="4dp"
+            android:background="@drawable/circle_vector_asset"
+            android:backgroundTint="#33000000"
+            android:padding="5dp"
+            android:src="@drawable/baseline_remove_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/counter_quantity"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.8" />
+
+        <ImageView
+            android:id="@+id/image_delete"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="12dp"
+            android:background="@drawable/circle_vector_asset"
+            android:backgroundTint="#FF0000"
+            android:padding="5dp"
+            android:src="@drawable/baseline_cancel_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>

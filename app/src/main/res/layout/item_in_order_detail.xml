@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="25dp"
+    android:layout_marginRight="25dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/item_image"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/burger"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="0dp"
+            android:layout_height="10dp"
+            android:src="@drawable/stroke_line"
+            app:layout_constraintBottom_toBottomOf="@+id/item_image"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/item_image"
+            app:layout_constraintTop_toTopOf="@+id/item_image" />
+
+        <TextView
+            android:id="@+id/item_name"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Burger thịt xông khói"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/imageView8"
+            app:layout_constraintStart_toEndOf="@+id/item_image"
+            app:layout_constraintTop_toTopOf="@+id/item_image" />
+
+        <TextView
+            android:id="@+id/item_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="23,000 VND"
+            android:textColor="#FF9800"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_quantity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="-20dp"
+            android:text="X 1"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/item_image"
+            app:layout_constraintStart_toEndOf="@+id/item_image"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
+        <TextView
+            android:id="@+id/item_total_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="-2dp"
+            android:layout_marginEnd="5dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="00,000 VND"
+            android:textColor="#4CAF50"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+
+        android:id="@+id/comment_image"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="left|top"
+        android:background="@drawable/circle_vector_asset"
+        android:backgroundTint="#4CAF50"
+        android:padding="3dp"
+        android:rotationY="@integer/material_motion_duration_medium_1"
+        android:src="@drawable/baseline_message_24" />
+
+</FrameLayout>

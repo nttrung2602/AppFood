@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_review_item"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="380dp"
+    android:minHeight="450dp"
+    android:paddingTop="20dp"
+    android:paddingRight="20dp"
+    android:layout_gravity="center"
+    >
+
+    <TextView
+        android:id="@+id/item_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxWidth="300dp"
+        android:maxLines="1"
+        android:text="Đánh giá Burger thịt xông khói"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="48dp"
+        android:ellipsize="end"
+        android:maxWidth="300dp"
+        android:maxLines="1"
+        android:text="Điểm vote:"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <RatingBar
+        android:id="@+id/ratingBar2"
+        android:stepSize="1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:numStars="5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:ellipsize="end"
+        android:maxWidth="300dp"
+        android:maxLines="1"
+        android:text="Bình luận:"
+        android:textColor="#000000"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/textView17"
+        app:layout_constraintTop_toBottomOf="@+id/textView17" />
+
+    <EditText
+        android:id="@+id/editText_comment"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginEnd="28dp"
+        android:background="@drawable/input_border"
+        android:gravity="top"
+        android:hint="Nhập bình luận"
+        android:padding="10dp"
+        android:textSize="22sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView1" />
+
+    <TextView
+        android:id="@+id/btn_confirm"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/radius_button"
+        android:backgroundTint="#FF9800"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Xác nhận"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/editText_comment"
+        app:layout_constraintTop_toBottomOf="@+id/editText_comment" />
+
+    <TextView
+        android:id="@+id/btn_cancel"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/radius_button"
+        android:backgroundTint="#CC272625"
+        android:gravity="center"
+        android:padding="15dp"
+        android:text="Hủy"
+        android:textColor="#ffffff"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_confirm"
+        app:layout_constraintEnd_toStartOf="@+id/btn_confirm"
+        app:layout_constraintStart_toStartOf="@+id/editText_comment"
+        app:layout_constraintTop_toTopOf="@+id/btn_confirm" />
+</androidx.constraintlayout.widget.ConstraintLayout>
