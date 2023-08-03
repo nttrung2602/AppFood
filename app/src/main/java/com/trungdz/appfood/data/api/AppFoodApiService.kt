@@ -2,10 +2,7 @@ package com.trungdz.appfood.data.api
 
 import com.trungdz.appfood.data.model.ItemDetail
 import com.trungdz.appfood.data.model.MessageResponse
-import com.trungdz.appfood.data.model.modelrequest.CheckoutRequest
-import com.trungdz.appfood.data.model.modelrequest.CreateReviewRequest
-import com.trungdz.appfood.data.model.modelrequest.LoginRequest
-import com.trungdz.appfood.data.model.modelrequest.UpdateNumItemInCartRequest
+import com.trungdz.appfood.data.model.modelrequest.*
 import com.trungdz.appfood.data.model.modelresponse.*
 import retrofit2.Response
 import retrofit2.http.*
@@ -16,6 +13,15 @@ interface AppFoodApiService {
     // account
     @POST("account/login")
     suspend fun loginUser(@Body infoLogin: LoginRequest): Response<LoginResponse>
+
+    @POST("account/forgotpassword")
+    suspend fun forgotPassword(@Body forgotPasswordRequest: ForgotPasswordRequest): Response<MessageResponse>
+
+    @POST("account/forgotpassword/verify")
+    suspend fun verifyOTP(@Body forgotPasswordRequest: ForgotPasswordRequest):Response<MessageResponse>
+
+    @POST("account/forgotpassword/success")
+    suspend fun accessNewPassword(@Body forgotPasswordRequest: ForgotPasswordRequest):Response<MessageResponse>
 
     // types
     @GET("types")

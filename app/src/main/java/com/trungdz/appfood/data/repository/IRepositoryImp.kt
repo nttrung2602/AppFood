@@ -2,10 +2,10 @@ package com.trungdz.appfood.data.repository
 
 import android.util.Log
 import com.google.gson.GsonBuilder
-import com.trungdz.appfood.data.model.ItemDetail
 import com.trungdz.appfood.data.model.MessageResponse
 import com.trungdz.appfood.data.model.modelrequest.CheckoutRequest
 import com.trungdz.appfood.data.model.modelrequest.CreateReviewRequest
+import com.trungdz.appfood.data.model.modelrequest.ForgotPasswordRequest
 import com.trungdz.appfood.data.model.modelrequest.LoginRequest
 import com.trungdz.appfood.data.model.modelresponse.*
 import com.trungdz.appfood.data.repository.datasource.IAppFoodRemoteDatasource
@@ -31,6 +31,42 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
         }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
+    }
+
+    override suspend fun forgotPassword(
+        username: String,
+    ): Resource<MessageResponse> {
+        return responseToForgotPassword(iAppFoodRemoteDatasource.forgotPassword(username))
+    }
+
+    private fun responseToForgotPassword(response: Response<MessageResponse>): Resource<MessageResponse> {
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
+
+        return Resource.Error(message = errorMessage(response.errorBody()?.string()))
+    }
+
+    override suspend fun verifyOTP(username: String, verifyID: String): Resource<MessageResponse> {
+        return responseToVerifyOTP(iAppFoodRemoteDatasource.verifyOTP(username, verifyID))
+    }
+
+    private fun responseToVerifyOTP(response: Response<MessageResponse>): Resource<MessageResponse> {
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
+
+        return Resource.Error(message = errorMessage(response.errorBody()?.string()))
+    }
+
+    override suspend fun accessNewPassword(
+        username: String,
+        verifyID: String,
+        password: String,
+        repeatPassword: String,
+    ): Resource<MessageResponse> {
+        return responseToAccessNewPassword(iAppFoodRemoteDatasource.accessNewPassword(username, verifyID, password, repeatPassword))
+    }
+
+    private fun responseToAccessNewPassword(response: Response<MessageResponse>): Resource<MessageResponse> {
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
+        return Resource.Error(message = errorMessage(response.errorBody()?.string()))
     }
 
     // Types
@@ -90,10 +126,9 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToGetAllItemByName(response: Response<ListItemsResponse>): Resource<ListItemsResponse> {
-        if (response.isSuccessful)
-            response.body()?.let {
-                return Resource.Success(it)
-            }
+        if (response.isSuccessful) response.body()?.let {
+            return Resource.Success(it)
+        }
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
 
@@ -120,8 +155,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToListReviews(response: Response<ListReviewsResponse>): Resource<ListReviewsResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
@@ -134,8 +168,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToCreateReview(response: Response<MessageResponse>): Resource<MessageResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
@@ -147,8 +180,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToWishlist(response: Response<WishlistResponse>): Resource<WishlistResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
 
@@ -158,13 +190,12 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToUpdateItemInWishList(response: Response<MessageResponse>): Resource<MessageResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
 
-    // Cart
+// Cart
 
     override suspend fun createItemInCart(idItem: Int, quantity: Int): Resource<MessageResponse> {
         val response = iAppFoodRemoteDatasource.createItemInCart(idItem, quantity)
@@ -187,8 +218,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToGetAllItemInCart(response: Response<ItemListInCartResponse>): Resource<ItemListInCartResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
@@ -200,8 +230,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToDeleteOneItemInCart(response: Response<MessageResponse>): Resource<MessageResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
@@ -213,8 +242,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToIncreaseNumItemInCart(response: Response<MessageResponse>): Resource<MessageResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
@@ -226,8 +254,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToDecreaseNumItemInCart(response: Response<MessageResponse>): Resource<MessageResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
@@ -238,8 +265,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToCheckout(response: Response<MessageResponse>): Resource<MessageResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
@@ -252,8 +278,7 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToUpdateItemInCart(response: Response<MessageResponse>): Resource<MessageResponse> {
-        if (response.isSuccessful)
-            response.body()?.let { return Resource.Success(it) }
+        if (response.isSuccessful) response.body()?.let { return Resource.Success(it) }
 
 
         Log.d("UpdateItem", "${response.errorBody()?.string()}")
@@ -267,10 +292,9 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToGetAllOrder(response: Response<OrdersListResponse>): Resource<OrdersListResponse> {
-        if (response.isSuccessful)
-            response.body()?.let {
-                return Resource.Success(it)
-            }
+        if (response.isSuccessful) response.body()?.let {
+            return Resource.Success(it)
+        }
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
 
@@ -280,10 +304,9 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
     }
 
     private fun responseToGetAllItemInOrder(response: Response<OrderDetailResponse>): Resource<OrderDetailResponse> {
-        if (response.isSuccessful)
-            response.body()?.let {
-                return Resource.Success(it)
-            }
+        if (response.isSuccessful) response.body()?.let {
+            return Resource.Success(it)
+        }
 
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }

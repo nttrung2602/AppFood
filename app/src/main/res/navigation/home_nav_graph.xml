@@ -35,7 +35,11 @@
         android:id="@+id/loginFragment"
         android:name="com.trungdz.appfood.presentation.ui.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" />
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
+            app:destination="@id/forgotPasswordFragment" />
+    </fragment>
     <fragment
         android:id="@+id/itemDetailFragment"
         android:name="com.trungdz.appfood.presentation.ui.ItemDetailFragment"
@@ -70,4 +74,31 @@
         android:name="com.trungdz.appfood.presentation.ui.ChartFragment"
         android:label="fragment_chart"
         tools:layout="@layout/fragment_chart" />
+    <fragment
+        android:id="@+id/forgotPasswordFragment"
+        android:name="com.trungdz.appfood.presentation.ui.account.forgotpassword.ForgotPasswordFragment"
+        android:label="fragment_forgot_password"
+        tools:layout="@layout/fragment_forgot_password" >
+        <action
+            android:id="@+id/action_forgotPasswordFragment_to_OTPForgotPasswordFragment2"
+            app:destination="@id/OTPForgotPasswordFragment2"
+            app:popUpTo="@id/forgotPasswordFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/OTPForgotPasswordFragment2"
+        android:name="com.trungdz.appfood.presentation.ui.account.forgotpassword.OTPForgotPasswordFragment"
+        android:label="fragment_otp_forgot_password"
+        tools:layout="@layout/fragment_otp_forgot_password" >
+        <action
+            android:id="@+id/action_OTPForgotPasswordFragment2_to_newForgotPasswordFragment2"
+            app:destination="@id/newForgotPasswordFragment2"
+            app:popUpTo="@id/OTPForgotPasswordFragment2"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/newForgotPasswordFragment2"
+        android:name="com.trungdz.appfood.presentation.ui.account.forgotpassword.NewForgotPasswordFragment"
+        android:label="fragment_new_forgot_password"
+        tools:layout="@layout/fragment_new_forgot_password" />
 </navigation>

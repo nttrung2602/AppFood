@@ -1,6 +1,5 @@
 package com.trungdz.appfood.domain.repository
 
-import com.trungdz.appfood.data.model.ItemDetail
 import com.trungdz.appfood.data.model.MessageResponse
 import com.trungdz.appfood.data.model.modelrequest.CheckoutRequest
 import com.trungdz.appfood.data.model.modelrequest.CreateReviewRequest
@@ -11,6 +10,14 @@ import com.trungdz.appfood.data.util.Resource
 interface IRepository {
     // Account
     suspend fun loginUser(infoLogin: LoginRequest): Resource<LoginResponse>
+    suspend fun forgotPassword(
+        username: String
+    ): Resource<MessageResponse>
+    suspend fun verifyOTP(username: String,verifyID:String):Resource<MessageResponse>
+    suspend fun accessNewPassword( username: String,
+                                   verifyID: String,
+                                   password: String,
+                                   repeatPassword: String):Resource<MessageResponse>
 
     // Type
     suspend fun getAllTypes(): Resource<ListTypesResponse>

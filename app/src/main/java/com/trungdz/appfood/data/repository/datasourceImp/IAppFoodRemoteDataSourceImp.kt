@@ -1,12 +1,8 @@
 package com.trungdz.appfood.data.repository.datasourceImp
 
-import android.util.Log
 import com.trungdz.appfood.data.api.AppFoodApiService
 import com.trungdz.appfood.data.model.MessageResponse
-import com.trungdz.appfood.data.model.modelrequest.CheckoutRequest
-import com.trungdz.appfood.data.model.modelrequest.CreateReviewRequest
-import com.trungdz.appfood.data.model.modelrequest.LoginRequest
-import com.trungdz.appfood.data.model.modelrequest.UpdateNumItemInCartRequest
+import com.trungdz.appfood.data.model.modelrequest.*
 import com.trungdz.appfood.data.model.modelresponse.*
 import com.trungdz.appfood.data.repository.datasource.IAppFoodRemoteDatasource
 import retrofit2.Response
@@ -17,6 +13,25 @@ class IAppFoodRemoteDataSourceImp @Inject constructor(private val appFoodApiServ
     // Account
     override suspend fun loginUser(login: LoginRequest): Response<LoginResponse> {
         return appFoodApiService.loginUser(login)
+    }
+
+    override suspend fun forgotPassword(
+        username: String,
+    ): Response<MessageResponse> {
+        return appFoodApiService.forgotPassword(ForgotPasswordRequest(username))
+    }
+
+    override suspend fun verifyOTP(username: String, verifyID: String): Response<MessageResponse> {
+        return appFoodApiService.forgotPassword(ForgotPasswordRequest(username,verifyID))
+    }
+
+    override suspend fun accessNewPassword(
+        username: String,
+        verifyID: String,
+        password: String,
+        repeatPassword: String
+    ): Response<MessageResponse> {
+        return appFoodApiService.accessNewPassword(ForgotPasswordRequest(username,verifyID,password,repeatPassword))
     }
 
     // Type

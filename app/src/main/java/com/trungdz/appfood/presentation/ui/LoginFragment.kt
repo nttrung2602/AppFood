@@ -93,6 +93,10 @@ class LoginFragment : Fragment() {
                 ).show()
             }
         }
+
+        binding.btnQMK.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
     }
     companion object {
         /**
