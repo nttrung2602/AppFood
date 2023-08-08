@@ -12,7 +12,7 @@ interface IAppFoodRemoteDatasource {
     suspend fun loginUser(login: LoginRequest): Response<LoginResponse>
     suspend fun forgotPassword( username: String):Response<MessageResponse>
 suspend fun verifyOTP(username: String,verifyID:String):Response<MessageResponse>
-    suspend fun accessNewPassword(username: String,verifyID: String,password:String,repeatPassword:String):Response<MessageResponse>
+    suspend fun accessNewPassword(username: String,password:String,repeatPassword:String):Response<MessageResponse>
     // Type
     suspend fun getAllTypes(): Response<ListTypesResponse>
 

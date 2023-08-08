@@ -5,7 +5,6 @@ import com.google.gson.GsonBuilder
 import com.trungdz.appfood.data.model.MessageResponse
 import com.trungdz.appfood.data.model.modelrequest.CheckoutRequest
 import com.trungdz.appfood.data.model.modelrequest.CreateReviewRequest
-import com.trungdz.appfood.data.model.modelrequest.ForgotPasswordRequest
 import com.trungdz.appfood.data.model.modelrequest.LoginRequest
 import com.trungdz.appfood.data.model.modelresponse.*
 import com.trungdz.appfood.data.repository.datasource.IAppFoodRemoteDatasource
@@ -57,11 +56,10 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
 
     override suspend fun accessNewPassword(
         username: String,
-        verifyID: String,
         password: String,
         repeatPassword: String,
     ): Resource<MessageResponse> {
-        return responseToAccessNewPassword(iAppFoodRemoteDatasource.accessNewPassword(username, verifyID, password, repeatPassword))
+        return responseToAccessNewPassword(iAppFoodRemoteDatasource.accessNewPassword(username, password, repeatPassword))
     }
 
     private fun responseToAccessNewPassword(response: Response<MessageResponse>): Resource<MessageResponse> {

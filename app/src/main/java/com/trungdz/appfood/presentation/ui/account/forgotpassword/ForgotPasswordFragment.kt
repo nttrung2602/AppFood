@@ -61,11 +61,7 @@ class ForgotPasswordFragment : Fragment() {
     private fun setEvent() {
         binding.btnTT.setOnClickListener {
             val text = binding.editUsername.text.toString()
-//            viewModel.forgotPassword(text)
-            findNavController().navigate(
-                        R.id.action_forgotPasswordFragment_to_OTPForgotPasswordFragment2,
-
-                    )
+            viewModel.forgotPassword(text)
         }
 
         binding.btnThoat.setOnClickListener {
@@ -81,10 +77,10 @@ class ForgotPasswordFragment : Fragment() {
                     Toast.makeText(context, it.data?.message, Toast.LENGTH_SHORT).show()
                     val text = binding.editUsername.text.toString()
                     val bundle = bundleOf("username" to text)
-//                    findNavController().navigate(
-//                        R.id.action_forgotPasswordFragment_to_OTPForgotPasswordFragment2,
-//                        bundle
-//                    )
+                    findNavController().navigate(
+                        R.id.action_forgotPasswordFragment_to_OTPForgotPasswordFragment,
+                        bundle
+                    )
                 }
                 is Resource.Error -> {
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()

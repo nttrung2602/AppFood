@@ -20,7 +20,7 @@ interface AppFoodApiService {
     @POST("account/forgotpassword/verify")
     suspend fun verifyOTP(@Body forgotPasswordRequest: ForgotPasswordRequest):Response<MessageResponse>
 
-    @POST("account/forgotpassword/success")
+    @POST("account/forgotpassword/verify/success")
     suspend fun accessNewPassword(@Body forgotPasswordRequest: ForgotPasswordRequest):Response<MessageResponse>
 
     // types

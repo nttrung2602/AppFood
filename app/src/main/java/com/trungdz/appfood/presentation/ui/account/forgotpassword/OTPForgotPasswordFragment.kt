@@ -4,7 +4,6 @@ import android.content.Context
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.view.KeyEvent
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +12,7 @@ import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.Toast
+import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.trungdz.appfood.R
@@ -62,6 +62,7 @@ class OTPForgotPasswordFragment : Fragment() {
         binding = FragmentOtpForgotPasswordBinding.bind(view)
 
         setEvent()
+        setObserver()
         setEventEditext()
         showKeyboard(binding.edt1)
 
@@ -170,9 +171,8 @@ class OTPForgotPasswordFragment : Fragment() {
                 val text =
                     edt1.text.toString() + edt2.text.toString() + edt3.text.toString() + edt4.text.toString() + edt5.text.toString() + edt6.text.toString()
                 if (text.length == 6) {
-//                    val username=requireArguments().getString("username")
-//                    viewModel.verifyOTP(username!!,text)
-                    Log.d("VerifyID", "$text")
+                    val username = requireArguments().getString("username")
+                    viewModel.verifyOTP(username!!, text)
                 } else {
                     Toast.makeText(context, "Yêu cầu nhập đủ mã xác thực!", Toast.LENGTH_SHORT)
                         .show()
@@ -190,8 +190,14 @@ class OTPForgotPasswordFragment : Fragment() {
             when (it) {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
-                    Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
-                    findNavController().navigate(R.id.action_OTPForgotPasswordFragment2_to_newForgotPasswordFragment2)
+                    Toast.makeText(context, it.data?.message, Toast.LENGTH_SHORT).show()
+
+                    val username = requireArguments().getString("username")
+                    val bundle = bundleOf("username" to username)
+                    findNavController().navigate(
+                        R.id.action_OTPForgotPasswordFragment_to_newForgotPasswordFragment,
+                        bundle
+                    )
                 }
                 is Resource.Error -> {
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()

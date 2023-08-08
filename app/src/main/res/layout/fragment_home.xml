@@ -24,7 +24,7 @@
                 android:background="#FFFFFF">
 
 
-                <LinearLayout
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/welcome"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -37,7 +37,10 @@
                         android:id="@+id/imageView3"
                         android:layout_width="50dp"
                         android:layout_height="50dp"
-                        app:cardCornerRadius="30dp">
+                        app:cardCornerRadius="30dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
 
                         <ImageView
                             android:id="@+id/user_image"
@@ -50,12 +53,25 @@
                         android:id="@+id/user_name"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
+                        android:layout_marginStart="5dp"
                         android:textColor="#000000"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        app:layout_constraintStart_toEndOf="@+id/imageView3"
+                        app:layout_constraintTop_toTopOf="parent"
                         tools:text="Xin chào, Trung Pr0" />
-                </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/btnTTCN"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#00BCD4"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="@+id/user_name"
+                        app:layout_constraintTop_toBottomOf="@+id/user_name"
+                        tools:text="Xem thông tin cá nhân" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
                     android:id="@+id/seachView"
@@ -93,16 +109,16 @@
             </com.google.android.material.appbar.AppBarLayout>
 
 
-            <TextView
-                android:id="@+id/tv_menu2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Thực đơn"
-                android:textColor="#000000"
-                android:textSize="35sp"
+<!--            <TextView-->
+<!--                android:id="@+id/tv_menu2"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginLeft="20dp"-->
+<!--                android:text="Thực đơn"-->
+<!--                android:textColor="#000000"-->
+<!--                android:textSize="35sp"-->
 
-                />
+<!--                />-->
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerView_item"

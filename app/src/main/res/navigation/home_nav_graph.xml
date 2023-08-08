@@ -80,24 +80,24 @@
         android:label="fragment_forgot_password"
         tools:layout="@layout/fragment_forgot_password" >
         <action
-            android:id="@+id/action_forgotPasswordFragment_to_OTPForgotPasswordFragment2"
-            app:destination="@id/OTPForgotPasswordFragment2"
+            android:id="@+id/action_forgotPasswordFragment_to_OTPForgotPasswordFragment"
+            app:destination="@id/OTPForgotPasswordFragment"
             app:popUpTo="@id/forgotPasswordFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/OTPForgotPasswordFragment2"
+        android:id="@+id/OTPForgotPasswordFragment"
         android:name="com.trungdz.appfood.presentation.ui.account.forgotpassword.OTPForgotPasswordFragment"
         android:label="fragment_otp_forgot_password"
         tools:layout="@layout/fragment_otp_forgot_password" >
         <action
-            android:id="@+id/action_OTPForgotPasswordFragment2_to_newForgotPasswordFragment2"
-            app:destination="@id/newForgotPasswordFragment2"
-            app:popUpTo="@id/OTPForgotPasswordFragment2"
+            android:id="@+id/action_OTPForgotPasswordFragment_to_newForgotPasswordFragment"
+            app:destination="@id/newForgotPasswordFragment"
+            app:popUpTo="@id/OTPForgotPasswordFragment"
             app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/newForgotPasswordFragment2"
+        android:id="@+id/newForgotPasswordFragment"
         android:name="com.trungdz.appfood.presentation.ui.account.forgotpassword.NewForgotPasswordFragment"
         android:label="fragment_new_forgot_password"
         tools:layout="@layout/fragment_new_forgot_password" />

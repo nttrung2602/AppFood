@@ -335,8 +335,6 @@ class HomeFragment : Fragment() {
                     Log.d("HomeFragment", " error")
                 }
             }
-
-
         }
 
     }
@@ -358,8 +356,10 @@ class HomeFragment : Fragment() {
                 Picasso.get().load(userInfo.image).into(binding.userImage) // use later
             binding.userName.text = "Xin chào, ${userInfo.name}"
             binding.imageView3.visibility = View.VISIBLE
+            binding.btnTTCN.visibility=View.VISIBLE
         } else {
             binding.imageView3.visibility = View.GONE
+            binding.btnTTCN.visibility=View.GONE
             binding.userName.text = "Bạn chưa đăng nhập!"
         }
 

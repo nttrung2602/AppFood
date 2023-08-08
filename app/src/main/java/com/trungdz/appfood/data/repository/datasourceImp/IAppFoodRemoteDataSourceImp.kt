@@ -27,11 +27,10 @@ class IAppFoodRemoteDataSourceImp @Inject constructor(private val appFoodApiServ
 
     override suspend fun accessNewPassword(
         username: String,
-        verifyID: String,
         password: String,
         repeatPassword: String
     ): Response<MessageResponse> {
-        return appFoodApiService.accessNewPassword(ForgotPasswordRequest(username,verifyID,password,repeatPassword))
+        return appFoodApiService.accessNewPassword(ForgotPasswordRequest(username=username,password=password,repeatPassword=repeatPassword))
     }
 
     // Type

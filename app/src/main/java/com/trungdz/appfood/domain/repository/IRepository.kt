@@ -15,7 +15,6 @@ interface IRepository {
     ): Resource<MessageResponse>
     suspend fun verifyOTP(username: String,verifyID:String):Resource<MessageResponse>
     suspend fun accessNewPassword( username: String,
-                                   verifyID: String,
                                    password: String,
                                    repeatPassword: String):Resource<MessageResponse>
 
