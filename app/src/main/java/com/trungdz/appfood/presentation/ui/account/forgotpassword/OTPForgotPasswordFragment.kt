@@ -18,7 +18,7 @@ import androidx.navigation.fragment.findNavController
 import com.trungdz.appfood.R
 import com.trungdz.appfood.data.util.Resource
 import com.trungdz.appfood.databinding.FragmentOtpForgotPasswordBinding
-import com.trungdz.appfood.presentation.viewmodel.account.OTPForgotPasswordFragmentViewModel
+import com.trungdz.appfood.presentation.viewmodel.account.changepassword.OTPForgotPasswordFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match

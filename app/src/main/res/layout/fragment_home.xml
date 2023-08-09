@@ -38,7 +38,6 @@
                         android:layout_width="50dp"
                         android:layout_height="50dp"
                         app:cardCornerRadius="30dp"
-                        app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
 
@@ -70,7 +69,19 @@
                         android:textStyle="bold"
                         app:layout_constraintStart_toStartOf="@+id/user_name"
                         app:layout_constraintTop_toBottomOf="@+id/user_name"
-                        tools:text="Xem thông tin cá nhân" />
+                        android:text="Xem thông tin cá nhân" />
+
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnDangNhap"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="2dp"
+                        android:background="@drawable/radius_button"
+                        android:backgroundTint="#B3FF9800"
+                        android:text="Đăng nhập"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView

@@ -33,6 +33,33 @@ class IAppFoodRemoteDataSourceImp @Inject constructor(private val appFoodApiServ
         return appFoodApiService.accessNewPassword(ForgotPasswordRequest(username=username,password=password,repeatPassword=repeatPassword))
     }
 
+    override suspend fun updateProfile(
+        name: String,
+        phone: String,
+        address: String,
+    ): Response<MessageResponse> {
+        return appFoodApiService.updateProfile(UpdateProfileRequest(name, phone, address))
+    }
+
+    override suspend fun createAccount(
+        username: String,
+        password: String,
+        name: String,
+        email: String,
+        phone: String,
+        address: String,
+    ): Response<MessageResponse> {
+        return appFoodApiService.createAccount(CreateAccountRequest(username, password, name, email, phone, address))
+    }
+
+    override suspend fun changePassword(
+        oldPassword: String,
+        newPassword: String,
+        repeatPassword: String,
+    ): Response<MessageResponse> {
+        return appFoodApiService.changePassword(ChangePasswordRequest(oldPassword,newPassword, repeatPassword))
+    }
+
     // Type
     override suspend fun getAllTypes(): Response<ListTypesResponse> {
         return appFoodApiService.getAllTypes()
@@ -120,5 +147,9 @@ class IAppFoodRemoteDataSourceImp @Inject constructor(private val appFoodApiServ
 
     override suspend fun chart(): Response<ChartDataResponse> {
         return appFoodApiService.chart()
+    }
+
+    override suspend fun cancelOrder(idOrder: Int): Response<MessageResponse> {
+        return appFoodApiService.cancelOrder(idOrder)
     }
 }

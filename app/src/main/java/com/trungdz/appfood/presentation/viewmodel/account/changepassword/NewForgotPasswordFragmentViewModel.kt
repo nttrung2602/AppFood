@@ -1,4 +1,4 @@
-package com.trungdz.appfood.presentation.viewmodel.account
+package com.trungdz.appfood.presentation.viewmodel.account.changepassword
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel

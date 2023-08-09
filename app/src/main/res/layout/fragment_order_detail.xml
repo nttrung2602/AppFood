@@ -40,7 +40,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="600dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/menu_bg"
         android:scaleX="1.1"
         android:scaleY="1">
@@ -170,5 +170,14 @@
             app:layout_constraintStart_toStartOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="Hủy đơn hàng"
+        android:padding="15dp"
+        android:visibility="gone"
+        android:textColor="#B3FFFFFF"
+        android:backgroundTint="#FFC107"/>
 </LinearLayout>

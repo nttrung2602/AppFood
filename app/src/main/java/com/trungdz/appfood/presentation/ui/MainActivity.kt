@@ -120,9 +120,17 @@ class MainActivity : AppCompatActivity() {
             }
     }
 
-    fun setItemMenuBadge(count: Int) {
-        findViewById<BottomNavigationView>(R.id.bottomNavigationView).getOrCreateBadge(R.id.cartFragment).number =
-            count
+    fun setDisplayItemMenuBadge(visible:Boolean=true){
+        val badge =
+            findViewById<BottomNavigationView>(R.id.bottomNavigationView).getOrCreateBadge(R.id.cartFragment)
+        badge.isVisible = visible
+    }
+    fun setItemMenuBadge(count: Int=0) {
+        val badge =
+            findViewById<BottomNavigationView>(R.id.bottomNavigationView).getOrCreateBadge(R.id.cartFragment)
+            badge.number = count
+
+
     }
 
     fun getItemMenuBadge(): Int {

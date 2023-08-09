@@ -1,4 +1,4 @@
-package com.trungdz.appfood.presentation.viewmodel.account
+package com.trungdz.appfood.presentation.viewmodel.account.changepassword
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,12 +11,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class OTPForgotPasswordFragmentViewModel @Inject constructor(val iRepository: IRepository):ViewModel() {
+class ChangePasswordFragmentViewModel @Inject constructor(private val iRepository: IRepository) :
+    ViewModel() {
     val messageResponse: MutableLiveData<Resource<MessageResponse>> = MutableLiveData()
 
-    fun verifyOTP(username:String,verifyID:String)=viewModelScope.launch {
-        val response=iRepository.verifyOTP(username,verifyID)
-
+    fun changePassword(oldPassword: String, newPassword: String, repeatPassword: String)=viewModelScope.launch {
+        val response = iRepository.changePassword(oldPassword, newPassword, repeatPassword)
         messageResponse.postValue(response)
     }
 }

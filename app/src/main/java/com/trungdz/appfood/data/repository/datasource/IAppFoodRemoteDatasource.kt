@@ -10,9 +10,18 @@ import retrofit2.Response
 interface IAppFoodRemoteDatasource {
     // Account
     suspend fun loginUser(login: LoginRequest): Response<LoginResponse>
-    suspend fun forgotPassword( username: String):Response<MessageResponse>
-suspend fun verifyOTP(username: String,verifyID:String):Response<MessageResponse>
-    suspend fun accessNewPassword(username: String,password:String,repeatPassword:String):Response<MessageResponse>
+    suspend fun forgotPassword(username: String): Response<MessageResponse>
+    suspend fun verifyOTP(username: String, verifyID: String): Response<MessageResponse>
+    suspend fun accessNewPassword(
+        username: String,
+        password: String,
+        repeatPassword: String,
+    ): Response<MessageResponse>
+
+    suspend fun updateProfile(name:String,phone:String, address:String):Response<MessageResponse>
+    suspend fun createAccount( username:String,  password:String, name:String,  email:String, phone:String, address:String):Response<MessageResponse>
+    suspend fun changePassword( oldPassword:String, newPassword:String,  repeatPassword:String):Response<MessageResponse>
+
     // Type
     suspend fun getAllTypes(): Response<ListTypesResponse>
 
@@ -51,4 +60,5 @@ suspend fun verifyOTP(username: String,verifyID:String):Response<MessageResponse
     suspend fun getAllOrder(): Response<OrdersListResponse>
     suspend fun getAllItemInOrder(idOrder: Int): Response<OrderDetailResponse>
     suspend fun chart(): Response<ChartDataResponse>
+    suspend fun cancelOrder(idOrder:Int):Response<MessageResponse>
 }

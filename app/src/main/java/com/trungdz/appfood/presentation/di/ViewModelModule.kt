@@ -16,11 +16,11 @@ import javax.inject.Singleton
 class ViewModelModule {
     // khởi tạo 1 thể hiện viewmodel duy nhất
     // dùng để tiêm vào biến khi không khởi tạo ViewModel bằng từ khóa "by"
-    @Provides
-    @Singleton
-    fun providesLoginViewModel(authUseCase: AuthUseCase,sharedPreference: ISharedPreference):LoginViewModel{
-        return LoginViewModel(authUseCase,sharedPreference)
-    }
+//    @Provides
+//    @Singleton
+//    fun providesLoginViewModel(authUseCase: AuthUseCase,sharedPreference: ISharedPreference):LoginViewModel{
+//        return LoginViewModel(authUseCase,sharedPreference)
+//    }
 
 //    @Provides
 //    @Singleton

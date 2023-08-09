@@ -1,4 +1,4 @@
-package com.trungdz.appfood.presentation.viewmodel.account
+package com.trungdz.appfood.presentation.viewmodel.account.profile
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -11,11 +11,11 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class ForgotPasswordFragmentViewModel @Inject constructor(val iRepository: IRepository):ViewModel(){
-    val messageResponse:MutableLiveData<Resource<MessageResponse>> = MutableLiveData()
+class ProfileFragmentViewModel @Inject constructor(private val iRepository: IRepository) : ViewModel() {
+    val messageResponse: MutableLiveData<Resource<MessageResponse>> = MutableLiveData()
 
-    fun forgotPassword(username:String)=viewModelScope.launch {
-        val response=iRepository.forgotPassword(username)
+    fun updateProfile(name: String, phone: String, address: String) = viewModelScope.launch {
+        val response=iRepository.updateProfile(name, phone, address)
         messageResponse.postValue(response)
     }
 }

@@ -18,6 +18,26 @@ interface IRepository {
                                    password: String,
                                    repeatPassword: String):Resource<MessageResponse>
 
+     suspend fun updateProfile(
+        name: String,
+        phone: String,
+        address: String,
+    ):Resource<MessageResponse>
+
+    suspend fun createAccount(
+        username: String,
+        password: String,
+        name: String,
+        email: String,
+        phone: String,
+        address: String,
+    ):Resource<MessageResponse>
+
+    suspend fun changePassword(
+        oldPassword: String,
+        newPassword: String,
+        repeatPassword: String,
+    ):Resource<MessageResponse>
     // Type
     suspend fun getAllTypes(): Resource<ListTypesResponse>
 
@@ -57,4 +77,5 @@ interface IRepository {
     suspend fun getAllOrder(): Resource<OrdersListResponse>
     suspend fun getAllItemInOrder(idOrder: Int): Resource<OrderDetailResponse>
     suspend fun chart(): Resource<ChartDataResponse>
+    suspend fun cancelOrder(idOrder: Int): Resource<MessageResponse>
 }

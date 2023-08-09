@@ -23,6 +23,15 @@ interface AppFoodApiService {
     @POST("account/forgotpassword/verify/success")
     suspend fun accessNewPassword(@Body forgotPasswordRequest: ForgotPasswordRequest):Response<MessageResponse>
 
+    @PUT("account/updateprofile")
+    suspend fun updateProfile(@Body updateProfileRequest: UpdateProfileRequest):Response<MessageResponse>
+
+    @POST("account/create")
+    suspend fun createAccount(@Body createAccountRequest: CreateAccountRequest):Response<MessageResponse>
+
+    @PUT("account/changepassword")
+    suspend fun changePassword(@Body changePasswordRequest: ChangePasswordRequest):Response<MessageResponse>
+
     // types
     @GET("types")
     suspend fun getAllTypes(): Response<ListTypesResponse>
@@ -95,4 +104,7 @@ interface AppFoodApiService {
 
     @GET("orders/chart")
     suspend fun chart(): Response<ChartDataResponse>
+
+    @GET("orders/cancel/{id_order}")
+    suspend fun cancelOrder (@Path("id_order") idOrder:Int):Response<MessageResponse>
 }

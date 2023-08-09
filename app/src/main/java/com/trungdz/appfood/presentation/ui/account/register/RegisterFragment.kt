@@ -1,4 +1,4 @@
-package com.trungdz.appfood.presentation.ui.account.forgotpassword
+package com.trungdz.appfood.presentation.ui.account.register
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,13 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
-import androidx.core.os.bundleOf
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.trungdz.appfood.R
 import com.trungdz.appfood.data.util.Resource
-import com.trungdz.appfood.databinding.FragmentForgotPasswordBinding
-import com.trungdz.appfood.presentation.viewmodel.account.forgotpassword.ForgotPasswordFragmentViewModel
+import com.trungdz.appfood.databinding.FragmentRegisterBinding
+import com.trungdz.appfood.presentation.viewmodel.account.register.RegisterFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,11 +21,11 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ForgotPasswordFragment.newInstance] factory method to
+ * Use the [RegisterFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
 @AndroidEntryPoint
-class ForgotPasswordFragment : Fragment() {
+class RegisterFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -44,28 +43,40 @@ class ForgotPasswordFragment : Fragment() {
         savedInstanceState: Bundle?,
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_forgot_password, container, false)
+        return inflater.inflate(R.layout.fragment_register, container, false)
     }
 
-    lateinit var binding: FragmentForgotPasswordBinding
-    val viewModel: ForgotPasswordFragmentViewModel by viewModels()
+    lateinit var binding: FragmentRegisterBinding
+    private val viewModel: RegisterFragmentViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentForgotPasswordBinding.bind(view)
+        binding = FragmentRegisterBinding.bind(view)
 
         setEvent()
         setObserver()
     }
 
     private fun setEvent() {
-        binding.btnTT.setOnClickListener {
-            val text = binding.editUsername.text.toString()
-            viewModel.forgotPassword(text)
+        binding.backImage.setOnClickListener {
+            findNavController().popBackStack()
         }
 
-        binding.btnThoat.setOnClickListener {
-            findNavController().popBackStack(R.id.loginFragment, false)
+        binding.btnConfirm.setOnClickListener {
+            val username = binding.edtUsername.text.toString()
+            val password = binding.edtPassword.text.toString()
+            val name = binding.edtFullname.text.toString()
+            val email = binding.edtEmail.text.toString()
+            val phone = binding.edtPhone.text.toString()
+            val address = binding.edtAddress.text.toString()
+
+            if(phone.length < 10){
+                Toast.makeText(context,"Số điện thoại phải đủ 10 chữ số",Toast.LENGTH_SHORT).show()
+            }else if(!(email.contains("@",ignoreCase = true) && email.contains(".",ignoreCase = true))){
+                Toast.makeText(context,"Vui lòng nhập đúng định dạng email!",Toast.LENGTH_SHORT).show()
+            }else{
+                viewModel.createAccount(username, password, name, email, phone, address)
+            }
         }
     }
 
@@ -75,12 +86,7 @@ class ForgotPasswordFragment : Fragment() {
                 is Resource.Loading -> {}
                 is Resource.Success -> {
                     Toast.makeText(context, it.data?.message, Toast.LENGTH_SHORT).show()
-                    val text = binding.editUsername.text.toString()
-                    val bundle = bundleOf("username" to text)
-                    findNavController().navigate(
-                        R.id.action_forgotPasswordFragment_to_OTPForgotPasswordFragment,
-                        bundle
-                    )
+                    findNavController().popBackStack()
                 }
                 is Resource.Error -> {
                     Toast.makeText(context, it.message, Toast.LENGTH_SHORT).show()
@@ -96,12 +102,12 @@ class ForgotPasswordFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ForgotPasswordFragment.
+         * @return A new instance of fragment RegisterFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ForgotPasswordFragment().apply {
+            RegisterFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.trungdz.appfood.R
 import com.trungdz.appfood.data.util.Resource
 import com.trungdz.appfood.databinding.FragmentNewForgotPasswordBinding
-import com.trungdz.appfood.presentation.viewmodel.account.NewForgotPasswordFragmentViewModel
+import com.trungdz.appfood.presentation.viewmodel.account.changepassword.NewForgotPasswordFragmentViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 // TODO: Rename parameter arguments, choose names that match
@@ -47,7 +47,7 @@ class NewForgotPasswordFragment : Fragment() {
     }
 
     lateinit var binding: FragmentNewForgotPasswordBinding
-    val viewModel:NewForgotPasswordFragmentViewModel by viewModels()
+    val viewModel: NewForgotPasswordFragmentViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

@@ -87,7 +87,10 @@ class OrderDetailFragment : Fragment() {
 
                             orderCode.text = "#" + idOrder.toString()
                             when (it.status) {
-                                0 -> orderStatus.text = "Chờ xác nhận"
+                                0 -> {
+                                    orderStatus.text = "Chờ xác nhận"
+                                    btnCancel.visibility=View.VISIBLE
+                                }
                                 1 -> orderStatus.text = "Đã xác nhận"
                                 2 -> orderStatus.text = "Hủy"
                             }
@@ -141,11 +144,28 @@ class OrderDetailFragment : Fragment() {
                 ).show()
             }
         }
+
+        viewModel.messageResponse.observe(viewLifecycleOwner){
+            when(it){
+                is Resource.Loading->{}
+                is Resource.Success->{
+                    Toast.makeText(context,it.data?.message,Toast.LENGTH_SHORT).show()
+                    findNavController().popBackStack()
+                }
+                is Resource.Error->{
+                    Toast.makeText(context,it.message,Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
     private fun setEventListener() {
         binding.backImage.setOnClickListener {
             findNavController().popBackStack()
+        }
+        binding.btnCancel.setOnClickListener {
+            val idOrder=requireArguments().getInt("id_order")
+            viewModel.cancelOrder(idOrder)
         }
     }
 

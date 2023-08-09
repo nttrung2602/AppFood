@@ -134,6 +134,14 @@ class HomeFragment : Fragment() {
             binding.swipeRefresh.isEnabled =
                 verticalOffset == 0 && ((binding.appbar.height - binding.appbar.bottom) == 0) // equal true if appbar is fully expanded
         }
+
+        binding.btnTTCN.setOnClickListener {
+            findNavController().navigate(R.id.action_homeFragment_to_profileFragment)
+        }
+
+        binding.btnDangNhap.setOnClickListener {
+            findNavController().navigate(R.id.loginFragment)
+        }
     }
 
 
@@ -357,7 +365,11 @@ class HomeFragment : Fragment() {
             binding.userName.text = "Xin chào, ${userInfo.name}"
             binding.imageView3.visibility = View.VISIBLE
             binding.btnTTCN.visibility=View.VISIBLE
+            binding.btnDangNhap.visibility=View.GONE
+            (activity as MainActivity).setDisplayItemMenuBadge(true)
+
         } else {
+            binding.btnDangNhap.visibility=View.VISIBLE
             binding.imageView3.visibility = View.GONE
             binding.btnTTCN.visibility=View.GONE
             binding.userName.text = "Bạn chưa đăng nhập!"

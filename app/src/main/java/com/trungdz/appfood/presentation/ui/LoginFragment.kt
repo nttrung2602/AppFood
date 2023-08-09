@@ -1,6 +1,7 @@
 package com.trungdz.appfood.presentation.ui
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -59,13 +60,13 @@ class LoginFragment : Fragment() {
     }
     private fun setEventListener() {
         binding.btnLogin.setOnClickListener {
-
             val username = binding.edtUsername.text.toString()
             val password = binding.edtPassword.text.toString()
 
             val validationResult = Utils.validationLoginRequest(username, password)
 
             if (validationResult.successful) {
+
                 binding.loginProgress.loadingProgress.visibility = View.VISIBLE
 
                 val loginRequest = LoginRequest(username, password)
@@ -75,6 +76,7 @@ class LoginFragment : Fragment() {
                 loginViewModel.loggedIn.observe(viewLifecycleOwner) { status ->
                     if (status == true) {
                         binding.loginProgress.loadingProgress.visibility = View.GONE
+
                         findNavController().popBackStack()
                     } else {
                         binding.loginProgress.loadingProgress.visibility = View.GONE
@@ -85,6 +87,7 @@ class LoginFragment : Fragment() {
                         ).show()
                     }
                 }
+
             } else {
                 Snackbar.make(
                     binding.activityLogin,
@@ -96,6 +99,13 @@ class LoginFragment : Fragment() {
 
         binding.btnQMK.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_forgotPasswordFragment)
+        }
+
+        binding.btnDK.setOnClickListener {
+            findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
+        }
+        binding.backImage.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
     companion object {

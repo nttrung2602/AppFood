@@ -41,6 +41,7 @@ class LoginViewModel @Inject constructor(
                     val gson = Gson()
 
                     saveUserInfo(gson.toJson(result.data?.userInfo))
+
                     Log.d("TrangThaiDangNhap", "${sharedPreference.getLoggedInStatus()}")
                     Log.d("LoginViewModel", "I'm here, Success ${result.message}")
                 }

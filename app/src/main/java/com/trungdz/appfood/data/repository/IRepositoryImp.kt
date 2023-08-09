@@ -67,6 +67,52 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
         return Resource.Error(message = errorMessage(response.errorBody()?.string()))
     }
 
+    override suspend fun updateProfile(
+        name: String,
+        phone: String,
+        address: String,
+    ): Resource<MessageResponse> {
+        return responseToUpdateProfile(iAppFoodRemoteDatasource.updateProfile(name, phone, address))
+    }
+
+    private fun responseToUpdateProfile(response: Response<MessageResponse>):Resource<MessageResponse>{
+        if(response.isSuccessful)
+            response.body()?.let { return Resource.Success(it) }
+        return Resource.Error(message = errorMessage(response.errorBody()?.string()))
+    }
+
+    override suspend fun createAccount(
+        username: String,
+        password: String,
+        name: String,
+        email: String,
+        phone: String,
+        address: String,
+    ): Resource<MessageResponse> {
+        return responseToCreateAccount(iAppFoodRemoteDatasource.createAccount(username, password, name, email, phone, address))
+    }
+
+    private fun responseToCreateAccount(response: Response<MessageResponse>):Resource<MessageResponse>{
+        if(response.isSuccessful)
+            response.body()?.let { return Resource.Success(it) }
+        return Resource.Error(message = errorMessage(response.errorBody()?.string()))
+    }
+
+    override suspend fun changePassword(
+        oldPassword: String,
+        newPassword: String,
+        repeatPassword: String,
+    ): Resource<MessageResponse> {
+        return responseToChangePassword(iAppFoodRemoteDatasource.changePassword(oldPassword, newPassword, repeatPassword))
+    }
+
+    private fun responseToChangePassword(response: Response<MessageResponse>):Resource<MessageResponse>{
+        if(response.isSuccessful)
+            response.body()?.let { return Resource.Success(it) }
+        return Resource.Error(message = errorMessage(response.errorBody()?.string()))
+    }
+
+
     // Types
     override suspend fun getAllTypes(): Resource<ListTypesResponse> {
         val response = iAppFoodRemoteDatasource.getAllTypes()
@@ -322,6 +368,15 @@ class IRepositoryImp @Inject constructor(private val iAppFoodRemoteDatasource: I
         return Resource.Error(message = "${errorMessage(response.errorBody()?.string())}")
     }
 
+    override suspend fun cancelOrder(idOrder: Int): Resource<MessageResponse> {
+        return responseToCancelOrder(iAppFoodRemoteDatasource.cancelOrder(idOrder))
+    }
+
+    private  fun responseToCancelOrder(response: Response<MessageResponse>):Resource<MessageResponse>{
+        if(response.isSuccessful)
+            response.body()?.let { return Resource.Success(it) }
+        return Resource.Error(message = errorMessage(response.errorBody()?.string()))
+    }
     // util
     private fun errorMessage(message: String?): String {
         val gson = GsonBuilder().create()
